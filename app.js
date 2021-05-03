@@ -8,16 +8,14 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const listItems = document.getElementsByTagName('li');
 
-
-
 listUl.addEventListener('mouseover', (event) => {
-    if (event.target.tagName == 'LI') {
+    if (event.target.tagName == 'P') {
         event.target.textContent = event.target.textContent.toUpperCase();
     };
 });
 
 listUl.addEventListener('mouseout', (event) => {
-    if (event.target.tagName == 'LI') {
+    if (event.target.tagName == 'P') {
         event.target.textContent = event.target.textContent.toLowerCase();
     }
 });
