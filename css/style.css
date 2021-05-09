@@ -73,6 +73,7 @@ button+button {
 
 p+button {
     background: #52bab3;
+    margin-left: 85%;
 }
 
 .list button+button {
@@ -90,6 +91,12 @@ li button:first-child {
 
 .list li button:last-child {
     background: #768da3;
+}
+
+li .button-container {
+    margin-top: 0;
+    border: none;
+    padding: 0;
 }
 
 li button {
