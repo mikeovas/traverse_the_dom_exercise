@@ -26,7 +26,7 @@ ul {
 
 li {
     padding: 0 .5em;
-    /* margin-bottom: .35em; */
+    margin-bottom: .35em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -74,6 +74,7 @@ button+button {
 p+button {
     background: #52bab3;
     margin-left: 85%;
+    padding-right: 5%;
 }
 
 .list button+button {
@@ -96,7 +97,6 @@ li button:first-child {
 li .button-container {
     margin-top: 0;
     border: none;
-    padding: 0;
 }
 
 li button {

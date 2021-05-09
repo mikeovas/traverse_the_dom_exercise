@@ -21,7 +21,6 @@ listUl.addEventListener('mouseout', (event) => {
     }
 });
 
-
 toggleList.addEventListener('click', () => {
     if (listDiv.style.display == 'none') {
         toggleList.textContent = "Hide list";
@@ -37,12 +36,11 @@ descriptionButton.addEventListener('click', () => {
     descriptionInput.value = "";
 });
 
-
 addItemButton.addEventListener('click', () => {
     if (addItemInput != "") {
         let ul = document.getElementsByTagName('ul')[0];
         let li = document.createElement('li');
-        let liTemplate = '<p>{TEXT}</p><div class="button-container"><button class="up">Up</button><button class="remove">Remove item</button></div>';
+        let liTemplate = '<p>{TEXT}</p><div class="button-container"><button class="up">Up</button><button class="down">Down</button><button class="remove">Remove item</button></div>';
 
         liTemplate = liTemplate.replace('{TEXT}', addItemInput.value);
 
@@ -57,7 +55,9 @@ addItemButton.addEventListener('click', () => {
 listUl.addEventListener('click', (event) => {
     let li = event.target.parentNode.parentNode;
     let ul = li.parentNode;
+
     let prevLi = li.previousElementSibling;
+    let nextLi = li.nextElementSibling;
 
     if (event.target.tagName == 'BUTTON') {
         if (event.target.className == 'remove') {
@@ -66,6 +66,11 @@ listUl.addEventListener('click', (event) => {
         if (event.target.className == 'up') {
             if (prevLi) {
                 ul.insertBefore(li, prevLi);
+            }
+        }
+        if (event.target.className == 'down') {
+            if (nextLi) {
+                ul.insertBefore(nextLi, li);
             }
         }
     }
