@@ -74,7 +74,6 @@ button+button {
 p+button {
     background: #52bab3;
     margin-left: 85%;
-    padding-right: 5%;
 }
 
 .list button+button {
@@ -95,6 +94,8 @@ li button:first-child {
 }
 
 li .button-container {
+    display: flex;
+    justify-content: space-between;
     margin-top: 0;
     border: none;
 }
