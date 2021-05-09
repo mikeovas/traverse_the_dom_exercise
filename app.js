@@ -8,17 +8,17 @@ const addItemInput = document.querySelector('input.addItemInput');
 const addItemButton = document.querySelector('button.addItemButton');
 const listItems = document.getElementsByTagName('li');
 
-listUl.addEventListener('mouseover', (event) => {
-    if (event.target.tagName == 'P') {
-        event.target.textContent = event.target.textContent.toUpperCase();
-    };
-});
+// listUl.addEventListener('mouseover', (event) => {
+//     if (event.target.tagName == 'P') {
+//         event.target.textContent = event.target.textContent.toUpperCase();
+//     };
+// });
 
-listUl.addEventListener('mouseout', (event) => {
-    if (event.target.tagName == 'P') {
-        event.target.textContent = event.target.textContent.toLowerCase();
-    }
-});
+// listUl.addEventListener('mouseout', (event) => {
+//     if (event.target.tagName == 'P') {
+//         event.target.textContent = event.target.textContent.toLowerCase();
+//     }
+// });
 
 
 toggleList.addEventListener('click', () => {
@@ -37,25 +37,30 @@ descriptionButton.addEventListener('click', () => {
 });
 
 addItemButton.addEventListener('click', () => {
-    let ul = document.getElementsByTagName('ul')[0];
-    let li = document.createElement('li');
-    li.textContent = addItemInput.value;
-    ul.appendChild(li);
-    addItemInput.value = "";
+    if (addItemInput.value != "") {
+        let ul = document.getElementsByTagName('ul')[0];
+        let li = document.createElement('li');
+
+        let liTemplate = '<p>{TEXT}</p><div class="button-container"><button class="up">Up</button><button class="remove">Remove item</button></div>';
+        liTemplate = liTemplate.replace('{TEXT}', addItemInput.value)
+
+        ul.appendChild(li);
+        li.innerHTML = liTemplate
+
+        addItemInput.value = "";
+    }
 });
 
 listUl.addEventListener('click', (event) => {
     if (event.target.tagName == 'BUTTON') {
+        let li = event.target.parentNode.parentNode;
+        let ul = li.parentNode;
+
         if (event.target.className == 'remove') {
-            let li = event.target.parentNode;
-            console.log(event);
-            let ul = li.parentNode;
             ul.removeChild(li);
         }
         if (event.target.className == 'up') {
-            let li = event.target.parentNode;
             let prevLi = li.previousElementSibling;
-            let ul = li.parentNode;
             if (prevLi) {
                 ul.insertBefore(li, prevLi);
             }
